@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\HelloWorldController;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Api\ProductController;
 
 
 /*
@@ -13,6 +14,7 @@ use App\Http\Controllers\Auth\LoginController;
 | API Routes
 |--------------------------------------------------------------------------
 |
+
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
@@ -61,4 +63,12 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('articles', [ArticleController::class,'store']);
     Route::put('articles/{article}', [ArticleController::class,'update']);
     Route::delete('articles/{article}', [ArticleController::class,'delete']);
+
+    Route::post('products/create', [ProductController::class,'create']);
 });
+
+Route::get('products/get-all', [ProductController::class,'getAll']);
+Route::get('products/get-by-product-no/{product}', [ProductController::class,'getByProductNo']);
+//Route::post('products/create', [ProductController::class,'create']);
+Route::put('products/update/{product}', [ProductController::class,'update']);
+Route::delete('products/delete/{product}', [ProductController::class,'delete']);
